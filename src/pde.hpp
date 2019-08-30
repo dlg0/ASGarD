@@ -89,19 +89,6 @@ make_PDE(PDE_opts choice, int const level = -1, int const degree = -1)
     return std::make_unique<PDE_fokkerplanck_1d_4p1a<P>>(level, degree);
   case PDE_opts::fokkerplanck_1d_4p2:
     return std::make_unique<PDE_fokkerplanck_1d_4p2<P>>(level, degree);
-  // TODO not yet implemented, replace return with appropriate types
-  case PDE_opts::vlasov4:
-    return std::make_unique<PDE_continuity_1d<P>>(level, degree);
-  case PDE_opts::vlasov43:
-    return std::make_unique<PDE_continuity_1d<P>>(level, degree);
-  case PDE_opts::vlasov5:
-    return std::make_unique<PDE_continuity_1d<P>>(level, degree);
-  case PDE_opts::vlasov7:
-    return std::make_unique<PDE_continuity_1d<P>>(level, degree);
-  case PDE_opts::vlasov8:
-    return std::make_unique<PDE_continuity_1d<P>>(level, degree);
-  case PDE_opts::pde_user:
-    return std::make_unique<PDE_continuity_1d<P>>(level, degree);
   default:
     std::cout << "Invalid pde choice" << std::endl;
     exit(-1);
