@@ -12,22 +12,28 @@
 // operators
 template<typename P>
 fk::matrix<double>
-generate_coefficients(dimension<P> const &dim, term<P> const &term_1D,
+generate_coefficients(dimension<P> const &dim, term<P> &term_1D,
                       double const time, bool const rotate)
 {
   int const len = term_1D.n_partial_terms();
 
   assert(term_1D.n_partial_terms() > 0);
 
+  /* unroll the loop one iteration */
   fk::matrix<double> full_operator =
       partial_operator(dim, term_1D, time, rotate, term_1D.get_partial_term(0));
 
-  /* unroll the loop one iteration */
+  /* invoke the type conversion constructor */
+  term_1D.get_partial_term(0).set_coefficients(fk::matrix<P>(full_operator));
+
   for (int i = 1; i < len; i++)
   {
-    full_operator =
-        full_operator * partial_operator(dim, term_1D, time, rotate,
-                                         term_1D.get_partial_term(i));
+    fk::matrix<double> accumulator = partial_operator(
+        dim, term_1D, time, rotate, term_1D.get_partial_term(i));
+
+    term_1D.get_partial_term(i).set_coefficients(fk::matrix<P>(accumulator));
+
+    full_operator = full_operator * accumulator;
   }
 
   return full_operator;
@@ -39,9 +45,8 @@ generate_coefficients(dimension<P> const &dim, term<P> const &term_1D,
 // coefficient matricies
 template<typename P>
 fk::matrix<double>
-partial_operator(dimension<P> const &dim, term<P> const &term_1D,
-                 double const time, bool const rotate,
-                 class partial_term<P> const &partial_term)
+partial_operator(dimension<P> const &dim, term<P> &term_1D, double const time,
+                 bool const rotate, class partial_term<P> const &partial_term)
 {
   assert(time >= 0.0);
   // setup jacobi of variable x and define coeff_mat
@@ -389,9 +394,9 @@ partial_operator(dimension<P> const &dim, term<P> const &term_1D,
 }
 
 template fk::matrix<double>
-generate_coefficients(dimension<float> const &dim, term<float> const &term_1D,
+generate_coefficients(dimension<float> const &dim, term<float> &term_1D,
                       double const time, bool const rotate);
 
 template fk::matrix<double>
-generate_coefficients(dimension<double> const &dim, term<double> const &term_1D,
+generate_coefficients(dimension<double> const &dim, term<double> &term_1D,
                       double const time, bool const rotate);

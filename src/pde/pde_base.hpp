@@ -198,6 +198,19 @@ public:
   boundary_condition const right;
 
   P flux_scale;
+
+  fk::matrix<P> const &get_coefficients() const { return coefficients_; }
+
+  void set_coefficients(fk::matrix<P> const &new_coefficients)
+  {
+    this->coefficients_.clear_and_resize(
+        new_coefficients.nrows(), new_coefficients.ncols()) = new_coefficients;
+
+    return;
+  }
+
+private:
+  fk::matrix<P> coefficients_;
 };
 
 template<typename P>
@@ -257,7 +270,7 @@ public:
     return d.get_degree() * static_cast<int>(std::pow(2, d.get_level()));
   };
 
-  class partial_term<P> const &get_partial_term(int i) const
+  class partial_term<P> &get_partial_term(int i)
   {
     return partial_terms[i];
   };
@@ -270,7 +283,7 @@ public:
   dimension<P> const owning_dim;
 
 private:
-  std::vector<class partial_term<P>> const partial_terms;
+  std::vector<class partial_term<P>> partial_terms;
 
   // this is to hold data that may change over the course of the simulation,
   // from any source, that is used in operator construction.
@@ -431,7 +444,7 @@ public:
   {
     return dimensions_;
   }
-  term_set<P> const &get_terms() const { return terms_; }
+  term_set<P> &get_terms() { return terms_; }
 
   fk::matrix<P> const &get_coefficients(int const term, int const dim) const
   {
