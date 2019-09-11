@@ -121,9 +121,14 @@ private:
 
   inline static std::vector<dimension<P>> const dimensions_ = {dim0_};
 
-  inline static class partial_term<P> partial_term_0 = partial_term<P>(
-      coefficient_type::grad, g_func_0, flux_type::central,
-      boundary_condition::periodic, boundary_condition::periodic);
+  // clang-format off
+  inline static class partial_term<P> 
+  partial_term_0 = partial_term<P>( coefficient_type::grad,
+                                    g_func_0,
+                                    flux_type::central,
+                                    boundary_condition::periodic,
+                                    boundary_condition::periodic );
+  // clang-format on
 
   // define terms (1 in this case)
   inline static term<P> term0_dim0_ =

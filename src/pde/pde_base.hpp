@@ -60,10 +60,6 @@ template<typename P>
 class dimension
 {
 public:
-  /*
-  boundary_condition const left;
-  boundary_condition const right;
-  */
   P const domain_min;
   P const domain_max;
   vector_func<P> const initial_condition;
@@ -179,11 +175,7 @@ public:
     return;
   }
 
-  void set_flux_scale(P const dfdu)
-  {
-    assert(flux == flux_type::lax_friedrich);
-    flux_scale = dfdu;
-  };
+  void set_flux_scale(P const dfdu) { flux_scale = dfdu; };
 
   P get_flux_scale() const { return flux_scale; };
 
@@ -275,7 +267,7 @@ public:
     return partial_terms[i];
   };
 
-  int n_partial_terms() const { return partial_terms.size(); };
+  int num_partial_terms() const { return partial_terms.size(); };
 
   // public but const data. no getters
   bool const time_dependent;
@@ -451,7 +443,6 @@ public:
     return terms_[term][dim].get_coefficients();
   }
 
-  /* Is this function used anywhere? It doesn't really look like it */
   void
   set_coefficients(fk::matrix<P> const coeffs, int const term, int const dim)
   {
