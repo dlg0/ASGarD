@@ -52,6 +52,7 @@ affiliations:
    index: 3
  - name: South Doyle High School, Knoxville, TN
    index: 4
+
 date: 28 October 2021
 
 bibliography: paper.bib
