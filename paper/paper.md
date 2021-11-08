@@ -57,11 +57,13 @@ date: 28 October 2021
 
 bibliography: paper.bib
 ---
+# Summary
+
+Words
+
 # Statement of Need
 
 Many areas of science exhibit physical processes which are well described by high dimensional partial differential equations (PDEs), e.g., the 4D, 5D and 6D models describing magnetized fusion plasmas [@Juno:2017], or the ... models describing quantum mechanical interactions of several bodies [@...]. In such problems, the so called "curse of dimensionality" whereby the number of degrees of freedom (or unknowns) required to be solved for scales as $N^D$ where $N$ is the number of grid points in any given dimension. A simple, albeit naive, 6D example with $N=1000$ grid points in each dimension would require more than an exabyte of memory just for store the solution vector, not to mention forming the matrix required to advance such a system in time. While there are methods to simulate such high-dimensional systems, they are mostly based on Monte-Carlo methods which are based on a statistical sampling such that the resulting solutions are noisy. Since the noise in such methods can only be reduced at a rate proportional to $\sqrt{N_p}$ where $N_p$ is the number of Monte-Carlo samples, there is a need for continuum, or grid / mesh based methods for high-dimensional problems which both do not suffer from noise, but which additionally bypass the curse of dimenstionality. Here we present a simulation framework which provides such a method.
-
-# Summary
 
 # Mathematics
 
