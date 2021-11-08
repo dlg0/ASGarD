@@ -2,19 +2,30 @@
 title: 'ASGarD: Adaptive Sparse Grid Discretization'
 tags:
   - C++
+  - Cuda
   - fusion
   - plasma
-  - advection
+  - sparse grid
   - high dimensional
+  - discontinuous Galerkin
 authors:
+  - name: David L. Green
+    orcid: 0000-0003-3107-1170
+    affiliation: 1
+  - name: Mark Cianciosa
+    orcid: 0000-0001-6211-5311
+    affiliation: 1
   - name: Ed D'Azevedo
     orcid: 0000-0002-6945-3206
     affiliation: 1
   - name: Wael Elwasif
     orcid: 0000-0003-0554-1036
     affiliation: 1
-  - name: David L. Green
-    orcid: 0000-0003-3107-1170
+  - name: Steven E. Hahn
+    orcid: 0000-0002-2018-7904
+    affiliation: 1
+  - name: Coleman J. Kendrick
+    orcid: 0000-0001-8808-9844
     affiliation: 1
   - name: Hao Lau
     orcid: 0000-0000-0000-0000
@@ -34,15 +45,7 @@ authors:
   - name: Timothy Younkin
     orcid: 0000-0002-7471-6840
     affiliation: 1
-  - name: Steven E. Hahn
-    orcid: 0000-0002-2018-7904
-    affiliation: 1
-  - name: Coleman J. Kendrick
-    orcid: 0000-0001-8808-9844
-    affiliation: 1
-  - name: Mark Cianciosa
-    orcid: 0000-0001-6211-5311
-    affiliation: 1
+
 affiliations:
  - name: Oak Ridge National Laboratory
    index: 1
@@ -69,8 +72,6 @@ Many areas of science exhibit physical processes which are well described by hig
 
 # Acknowledgements
 
-This research used resources of the Oak Ridge Leadership Computing Facility at the Oak Ridge National Laboratory, which is supported by the Office of Science of the U.S. Department of Energy under Contract No. DE-AC05-00OR22725.
-
-This research used resources of the National Energy Research Scientific Computing Center (NERSC), a U.S. Department of Energy Office of Science User Facility operated under Contract No. DE-AC02-05CH11231.
+This research used resources of the Oak Ridge Leadership Computing Facility (OLCF) at the Oak Ridge National Laboratory, and the National Energy Research Scientific Computing Center (NERSC), which are supported by the Office of Science of the U.S. Department of Energy under Contract Numbers DE-AC05-00OR22725 and DE-AC02-05CH11231 respectively.
 
 # References
