@@ -63,7 +63,7 @@ Many areas of science exhibit physical processes which are well described by hig
 
 ![Illustration of the curse of dimensionality in the context of solving a 6 dimensional PDE (e.g., those at the heart of magnetically confined fusion plasma physics) on modern supercomputers, and how the much memory the solution vector (solid black curves) and the matrix (magenta curves) require in both naive and Sparse Grid based discretizations as we vary the resolution of the simulation domain. \label{fig:scaling}](figures/exascale-updated.png){width=80%}
 
-![Caption 2. \label{fig:scaling}](figures/savings.png){width=80%}
+![Caption 2. \label{fig:scaling}](figures/scaling-and-savings.png){width=80%}
 
 
 # Acknowledgements
