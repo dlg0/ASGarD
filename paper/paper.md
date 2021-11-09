@@ -46,26 +46,26 @@ authors:
     orcid: 0000-0002-7471-6840
     affiliation: 1
 affiliations:
- - name: Oak Ridge National Laboratory
+ - name: Oak Ridge National Laboratory, Oak Ridge, Tennessee, USA
    index: 1
- - name: University of Tennessee Knoxville
+ - name: University of Tennessee Knoxville, Knoxville, Tennessee, USA
    index: 2
- - name: University of Georgia
+ - name: University of Georgia, Athens, Georgia, USA
    index: 3
- - name: South Doyle High School, Knoxville, TN
+ - name: South Doyle High School, Knoxville, Tennessee, USA
    index: 4
 date: 28 October 2021
 bibliography: paper.bib
 ---
 # Summary
 
-Many areas of science exhibit physical processes which are well described by high dimensional partial differential equations (PDEs), e.g., the 4D, 5D and 6D models describing magnetized fusion plasmas [@juno2018], or the ... models describing quantum mechanical interactions of several bodies (ref). In such problems, the so called "curse of dimensionality" whereby the number of degrees of freedom (or unknowns) required to be solved for scales as $N^D$ where $N$ is the number of grid points in any given dimension. A simple, albeit naive, 6D example is demonstrated in Fig.~\ref{fig:scaling} below where with $N=1000$ grid points in each dimension, the memory required just to store the solution vector, not to mention forming the matrix required to advance such a system in time, would exceed an exabyte. While there are methods to simulate such high-dimensional systems, they are mostly based on Monte-Carlo methods which rely on a statistical sampling such that the resulting solutions include noise. Since the noise in such methods can only be reduced at a rate proportional to $\sqrt{N_p}$ where $N_p$ is the number of Monte-Carlo samples, there is a need for continuum, or grid / mesh based methods for high-dimensional problems which both do not suffer from noise, but which additionally bypass the curse of dimenstionality. Here we present a simulation framework which provides such a method.
+Many areas of science exhibit physical [^1] processes which are described by high dimensional partial differential equations (PDEs), e.g., the 4D [@dorf2013], 5D [@candy2009] and 6D models [@juno2018] describing magnetized fusion plasmas, models describing quantum chemistry, or derivatives pricing [@bandrauk2007]. In such problems, the so called "curse of dimensionality" whereby the number of degrees of freedom (or unknowns) required to be solved for scales as $N^D$ where $N$ is the number of grid points in any given dimension. A simple, albeit naive, 6D example is demonstrated in Fig.~\ref{fig:scaling} where with $N=1000$ grid points in each dimension, the memory required just to store the solution vector, not to mention forming the matrix required to advance such a system in time, would exceed an exabyte - and also the available memory on the largest of supercomputers available today. While there are methods to simulate such high-dimensional systems, they are mostly based on Monte-Carlo methods [@e2020] which rely on a statistical sampling such that the resulting solutions include noise. Since the noise in such methods can only be reduced at a rate proportional to $\sqrt{N_p}$ where $N_p$ is the number of Monte-Carlo samples, there is a need for continuum, or grid / mesh based methods for high-dimensional problems which both do not suffer from noise, but which additionally bypass the curse of dimenstionality. Here we present a simulation framework which provides such a method via the approach of adaptive sparse grids [@pfluger2010].
+
+[^1]:This manuscript has been authored by UT-Battelle, LLC, under contract DE-AC05-00OR22725 with the US Department of Energy (DOE). The publisher acknowledges the US government license to provide public access under the DOE Public Access Plan (https://energy.gov/downloads/doe-public-access-plan).
 
 ![(left) Illustration of the curse of dimensionality in the context of solving a 6 dimensional PDE (e.g., those at the heart of magnetically confined fusion plasma physics) on modern supercomputers, and how the memory required to store the solution vector (solid black curves) and the matrix (magenta curves) in both naive and Sparse Grid based discretizations as the resolution of the simulation domain is varied. Memory limits of the Titan and Summit supercomputers at Oak Ridge National Laboratories, in addition to an approximate value for an ExaScale supercomputer, are overlaid for context; (right) Potential memory savings of a Sparse Grid based solver represented as the ratio of the naive tensor product full-grid (FG) degrees of freedom (DoF) to the sparse-grid (SG) DoF. \label{fig:scaling}](figures/scaling-and-savings.png){width=100%}
 
-The Adaptive Sparse Grid Discretization (ASGarD) code is a framework specifically targeted at solving high-dimensional PDEs using a combination of a Discontinuous-Galerkin Finite Element solver implemented atop an adaptive sparse grid basis. The adaptivity aspect allows for the sparsity of the basis to be adapted to the properties of the problem of interest, which facilitates retaining the advantages of sparse grids in cases where the standard sparse grid selection rule is not the best match.  
-
-The implementation incorporates CPU and GPU, as well as single and multi-node parallelism in a performance portable manner by casting the computational kernels as linear algebra operations and relying on vendor provided BLAS libraries to give portability. Several test problems are provided, including advection up to 6D.   
+The Adaptive Sparse Grid Discretization (ASGarD) code is a framework specifically targeted at solving high-dimensional PDEs using a combination of a Discontinuous-Galerkin Finite Element solver implemented atop an adaptive sparse grid basis. The adaptivity aspect allows for the sparsity of the basis to be adapted to the properties of the problem of interest, which facilitates retaining the advantages of sparse grids in cases where the standard sparse grid selection rule is not the best match. The implementation utilizes both CPU and GPU resources, as well as being single and multi-node capable. Performance portability is achieved by casting the computational kernels as linear algebra operations and relying on vendor provided BLAS libraries. Several test problems are provided, including advection up to 6D with either explicit or implicit timestepping.   
 
 # Acknowledgements
 
