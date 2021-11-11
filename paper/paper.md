@@ -30,13 +30,13 @@ authors:
   - name: Hao Lau
     orcid: 0000-0000-0000-0000
     affiliation: 1
-  - name: Graham Lopez
+  - name: M. Graham Lopez
     orcid: 0000-0002-5375-2105
     affiliation: 1
   - name: Adam McDaniel
     orcid: 0000-0000-0000-0000
     affiliation: "1, 4"
-  - name: Benjamin T. McDaniel
+  - name: B.Tyler McDaniel
     orcid: 0000-0000-0000-0000
     affiliation: "1, 2"
   - name: Lin Mu
