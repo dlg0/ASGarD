@@ -48,6 +48,12 @@ authors:
   - name: Stefan Schanke 
     orcid: 0000-0002-1518-3538
     affiliation: 1
+  - name: Hugo Brunie 
+    orcid: 0000-0000-0000-0000 
+    affiliation: "5, 6, 7"
+  - name: Nestor Demeure 
+    orcid: 0000-0000-0000-0000
+    affiliation: "5, 6"
 affiliations:
  - name: Oak Ridge National Laboratory, Oak Ridge, Tennessee, USA
    index: 1
@@ -57,6 +63,14 @@ affiliations:
    index: 3
  - name: South Doyle High School, Knoxville, Tennessee, USA
    index: 4
+ - name: National Energy Research Scientific Computing Center, Berkeley, California, USA
+   index: 5
+ - name: Lawrence Berkley Laboratory, Berkeley, California, USA
+   index: 6
+ - name: National Institute for Research in Digital Science and Technology, France 
+   index: 7
+
+
 date: 28 October 2021
 bibliography: paper.bib
 ---
